@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicador de mensajes</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="contenedor">
+    <header class="banner">
+      <p class="banner__etiqueta">Ingeniería Web · JavaScript asíncrono</p>
+      <h1>Publicador de mensajes</h1>
+      <p class="banner__descripcion">
+        Redacta una publicación, valida los datos y envíalos a una API REST mediante Fetch.
+      </p>
+    </header>
+
+    <section class="tarjeta" aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Nueva publicación</h2>
+      <p class="ayuda">
+        El título y el contenido son obligatorios. La petición se envía a
+        <span class="codigo">https://jsonplaceholder.typicode.com/posts</span>.
+      </p>
+
+      <form id="formulario-publicacion" novalidate>
+        <div class="campo">
+          <label for="titulo">
+            Título
+            <span class="obligatorio">obligatorio</span>
+          </label>
+          <input
+            id="titulo"
+            name="titulo"
+            type="text"
+            maxlength="120"
+            autocomplete="off"
+            aria-describedby="error-titulo"
+          >
+          <p id="error-titulo" class="error-campo" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="contenido">
+            Contenido
+            <span class="obligatorio">obligatorio</span>
+          </label>
+          <textarea
+            id="contenido"
+            name="contenido"
+            rows="6"
+            maxlength="2000"
+            aria-describedby="error-contenido"
+          ></textarea>
+          <p id="error-contenido" class="error-campo" hidden></p>
+        </div>
+
+        <button id="boton-publicar" type="submit">Publicar mensaje</button>
+      </form>
+
+      <div id="estado" class="estado" role="status" aria-live="polite" hidden>
+        <span id="estado-indicador" class="estado__indicador" hidden></span>
+        <p id="estado-mensaje" class="estado__mensaje"></p>
+      </div>
+    </section>
+
+    <section id="seccion-resultado" class="tarjeta" aria-labelledby="titulo-resultado" hidden>
+      <h2 id="titulo-resultado">Respuesta de la API</h2>
+      <p id="nota-api" class="nota">
+        El identificador es de prueba y la publicación no queda almacenada de forma permanente.
+      </p>
+      <dl class="resultado">
+        <div>
+          <dt>Estado HTTP</dt>
+          <dd id="resultado-estado"></dd>
+        </div>
+        <div>
+          <dt>Identificador</dt>
+          <dd id="resultado-id"></dd>
+        </div>
+        <div>
+          <dt>Título</dt>
+          <dd id="resultado-titulo"></dd>
+        </div>
+        <div>
+          <dt>Contenido</dt>
+          <dd id="resultado-contenido"></dd>
+        </div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <strong>Ingeniería Web</strong>
+    <span>Publicador de mensajes · Fetch, promesas y DOM</span>
+  </footer>
+
+  <script src="publicador.js"></script>
+</body>
+</html>
